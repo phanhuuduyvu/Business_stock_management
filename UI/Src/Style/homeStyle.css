@@ -14,3 +14,6 @@
    background-color:cyan;
    font-weight: 600;
 }
+
+.layout { margin-top: 72px; }
+    aside { width: 250px; min-height: 100vh; }
