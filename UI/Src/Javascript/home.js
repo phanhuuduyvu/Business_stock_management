@@ -34,11 +34,11 @@ if (lineCanvas) {
     new Chart(lineCanvas.getContext("2d"), {
         type: "line",
         data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+            labels: getLastSevenMonths(),
             datasets: [
                 {
                     label: "Team A",
-                    data: [42, 7, 89, 16, 54, 3, 78],
+                    data: getRandomValue(),
                     borderColor: "rgb(156, 93, 93)",
                     backgroundColor: "#5b88bd",
                     fill: true,
@@ -47,7 +47,7 @@ if (lineCanvas) {
                 },
                 {
                     label: "Team B",
-                    data: [25, 61, 8, 93, 47, 12, 36],
+                    data: getRandomValue(),
                     borderColor: "rgba(11, 11, 8, 0.47)",
                     backgroundColor: "rgb(88, 231, 122)",
                     fill: true,
@@ -65,3 +65,38 @@ if (lineCanvas) {
         },
     });
 }
+
+const barChart = document.getElementById("barChart");
+if(barchart){
+    new Chart(barChart.getContext("2d"), {
+        type: 'bar',
+        data: {
+            labels: getLastSevenMonths(),
+        }
+    })
+}
+
+function getLastSevenMonths(){
+    const labels = [];
+    const now = new Date();
+    for (let i = 6; i>=0; i--){
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        //2025-02-01
+        labels.push(d.toLocaleString('en-US', { month: 'short'}));
+    }
+    console.log(Math.floor(Math.random()));
+    Math.random() //random 0->1
+    Math.floor //delete the decimal places, only contain whole number
+    return labels;
+    console.log()
+}
+
+function getRandomValue() {
+    const random = [];
+    for (let i = 0; i<=6; i++){
+        //console.log (Math.floor(Math.random() * 201));
+        random.push((Math.floor(Math.random() * 201)))
+    }
+    return random;
+}
+
