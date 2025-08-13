@@ -57,6 +57,8 @@ if (lineCanvas) {
             ],
         },
         options: {
+  responsive: true,
+  maintainAspectRatio: false,
             ...baseOptions,
             scales: {
                 x: { grid: { display: false } },
@@ -64,16 +66,6 @@ if (lineCanvas) {
             },
         },
     });
-}
-
-const barChart = document.getElementById("barChart");
-if(barchart){
-    new Chart(barChart.getContext("2d"), {
-        type: 'bar',
-        data: {
-            labels: getLastSevenMonths(),
-        }
-    })
 }
 
 function getLastSevenMonths(){
@@ -100,3 +92,21 @@ function getRandomValue() {
     return random;
 }
 
+
+    const searchInput = document.getElementById('search');
+    const statusFilter = document.getElementById('statusFilter');
+    const tableRows = document.querySelectorAll('#dataTable tbody tr');
+
+    function filterTable() {
+        const searchValue = searchInput.value.toLowerCase();
+        const statusValue = statusFilter.value;
+        tableRows.forEach(row => {
+            const cells = row.getElementsByTagName('td');
+            const matchesSearch = cells[1].textContent.toLowerCase().includes(searchValue);
+            const matchesStatus = statusValue === '' || cells[2].textContent === statusValue;
+            row.style.display = matchesSearch && matchesStatus ? '' : 'none';
+        });
+    }
+
+    searchInput.addEventListener('input', filterTable);
+    statusFilter.addEventListener('change', filterTable);

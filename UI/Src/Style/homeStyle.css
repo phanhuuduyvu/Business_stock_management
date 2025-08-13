@@ -18,5 +18,16 @@
 .layout { margin-top: 72px; }
     aside { width: 250px; min-height: 100vh; }
 
-
+.chart-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  justify-content: space-between;
+}
+.chart-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 1;
+}
     

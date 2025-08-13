@@ -87,41 +87,75 @@
       </div>
 
       <!-- Chart card -->
-      <div class="row">
+  <div class="row">
         <!--Pie Chart-->
         <div class="col-md-6 mb-4">
-          <div class="card shadow-sm p-3">
-            <h5 class="card-title mb-3">Current Visits</h5>
-            <canvas id="pieChart"></canvas>
-            </div>
+          <div class="card shadow-sm p-3" style="height:340px; position:relative; overflow: hidden;">
+              <h5 class="card-title mb-3">Current Visits</h5>
+              <canvas id="pieChart" style="max-width: 100%; height: 225px; margin: 0 auto;"></canvas>
           </div>
-          <!--Pie Chart-->
+        </div>
+
 
           <!--Line Chart-->
           <div class="col-md-6 mb-4">
-          <div class="card shadow-sm p-3">
-            <h5 class="card-title mb-3">Current Visits</h5>
-            <canvas id="lineChart"></canvas>
-         </div>
-        </div> 
-        <!--line Chart-->
+            <div class="card shadow-sm p-3" style="height:340px;">
+              <h5 class="card-title mb-3">Sale Trend</h5>
+              <canvas id="lineChart" style="height:100%; width:100%;"></canvas>
+          </div>
+        </div>
+    </div>
 
-        <!--Bar Chart-->
-          <div class="col-md-6 mb-4">
-          <div class="card shadow-sm p-3">
-            <h5 class="card-title mb-3">Monthly Orders</h5>
-            <canvas id="barchart"></canvas>
-         </div>
-        </div> 
-        <!--Bar Chart-->
-      </div>
-    </main>
-  </div>
+   <!-- KPI CARDS -->
+    <div class="kpi-cards">
+        <div class="card">
+            <h2>$12,340 <span style="color:green;">+8%</span></h2>
+            <p>Revenue</p>
+        </div>
+        <div class="card">
+            <h2>320 <span style="color:red;">-2%</span></h2>
+            <p>Orders</p>
+        </div>
+        <div class="card">
+            <h2>1,120 <span style="color:green;">+5%</span></h2>
+            <p>Users</p>
+        </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-container">
+        <div class="filters">
+            <input type="text" id="search" placeholder="Search..." />
+            <select id="statusFilter">
+                <option value="">All Statuses</option>
+                <option value="Completed">Completed</option>
+                <option value="Pending">Pending</option>
+            </select>
+        </div>
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>#1001</td><td>John Doe</td><td>Completed</td></tr>
+                <tr><td>#1002</td><td>Jane Smith</td><td>Pending</td></tr>
+                <tr><td>#1003</td><td>Mike Brown</td><td>Completed</td></tr>
+                <tr><td>#1004</td><td>Sarah Lee</td><td>Pending</td></tr>
+                <tr><td>#1005</td><td>Chris White</td><td>Completed</td></tr>
+            </tbody>
+        </table>
+    </div>
+
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="../Javascript/home.js"></script>
+
 </body>
 </html>
