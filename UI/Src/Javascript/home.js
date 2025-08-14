@@ -110,3 +110,81 @@ function getRandomValue() {
 
     searchInput.addEventListener('input', filterTable);
     statusFilter.addEventListener('change', filterTable);
+
+    const radarCtx = document.getElementById('radarChart').getContext('2d');
+    if (radarCtx) {
+        new Chart(radarCtx.getContext("2d"), {
+        type: 'radar',
+        data: {
+            labels: ['English', 'History', 'Physics', 'Geography', 'Chinese', 'Math'],
+            datasets:  [
+                {
+                    label: 'Series 1',
+                    data: '[80, 40, 30, 50, 90, 50]',
+                    backgroundColor: 'rgba(33, 117, 255, 0.3)',
+                    borderColor: 'blue',
+                    pointBackgroundColor: 'blue',
+                },
+                {
+                    label: 'Series 2',
+                    data: [20, 60, 90, 10, 30, 70],
+                    backgroundColor: 'rgba(255, 180, 26, 0.3)',
+                    borderColor: 'orange',
+                    pointBackgroundColor: 'orange',
+                },
+                {
+                    label: 'Series 3',
+                    data: [50, 70, 60, 80, 30, 40], 
+                    backgroundColor: 'rgba(44, 188, 224, 0.3)',
+                    borderColor: 'cyan',
+                    pointBackgroundColor: 'cyan',
+                },
+            ],
+        },  
+        options: {
+        responsive: true,
+        maintainAspectRatio: false,
+            plugins: {
+                legend: { display: true, position: 'bottom' },
+                title: { display: false }
+                     },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 100
+                    }
+                },
+            },
+        });
+    }
+
+// Search existing items
+document.getElementById('searchAddedItems').addEventListener('input', function(e) {
+  const searchValue = e.target.value.toLowerCase();
+  document.querySelectorAll('#addedItemsTable tbody tr').forEach(row => {
+    const nameCell = row.querySelector('td');
+    row.style.display = nameCell && nameCell.textContent.toLowerCase().includes(searchValue)
+      ? ''
+      : 'none';
+  });
+});
+
+// Add new item with quantity
+document.getElementById('addItemForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('newItemName').value.trim();
+  const quantity = document.getElementById('newItemQuantity').value.trim();
+
+  if (name && quantity) {
+    const tbody = document.querySelector('#addedItemsTable tbody');
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `<td>${name}</td><td>${quantity}</td><td>0</td><td>0</td>`;
+    tbody.appendChild(newRow);
+
+    // Reset fields
+    document.getElementById('newItemName').value = '';
+    document.getElementById('newItemQuantity').value = '';
+  }
+});
