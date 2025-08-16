@@ -15,7 +15,7 @@
    font-weight: 600;
 }
 
-.layout { margin-top: 72px; }
+.layout { margin-top: 0; }
     aside { width: 250px; min-height: 100vh; }
 
 .chart-container {
