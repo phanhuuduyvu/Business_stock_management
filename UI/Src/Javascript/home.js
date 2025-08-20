@@ -104,12 +104,12 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "radar",
       data: {
         labels: [
-          "English",
-          "History",
-          "Physics",
-          "Geography",
-          "Chinese",
-          "Math",
+          "Raw materials",
+          "Sale trend",
+          "Finshed good",
+          "Quantity",
+          "Added consistently",
+          "Number of remove",
         ],
         datasets: [
           {
@@ -227,3 +227,34 @@ function getRandomValue() {
   }
   return random;
 }
+
+let tasks = [
+  { name: "Prepare Monthly Financial Report", status: "Pending" },
+  { name: "Design New Marketing Campaign", status: "Pending" },
+  { name: "Analyze Customer Feedback", status: "Pending" },
+  { name: "Update Website Content", status: "Pending" },
+  { name: "Conduct Market Research", status: "Pending" }
+];
+
+function renderTasksTable() {
+  const tbody = document.querySelector("#tasksTable tbody");
+  tbody.innerHTML = "";
+  tasks.forEach(task => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${task.name}</td><td>${task.status}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+// Initial render
+renderTasksTable();
+
+document.getElementById("addTaskBtn").addEventListener("click", function() {
+  const newTask = document.getElementById("newTaskInput").value.trim();
+  if(newTask) {
+    tasks.push({ name: newTask, status: "Pending" });
+    renderTasksTable();
+    document.getElementById("newTaskInput").value = "";
+  }
+});
+
